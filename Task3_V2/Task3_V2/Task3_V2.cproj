@@ -225,6 +225,8 @@
     </com_atmel_avrdbg_tool_samice>
     <avrtoolinterface>SWD</avrtoolinterface>
     <avrtoolinterfaceclock>4000000</avrtoolinterfaceclock>
+    <ResetRule>0</ResetRule>
+    <EraseKey />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>

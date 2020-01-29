@@ -16,6 +16,7 @@ static void button_handler(uint32_t ul_id, uint32_t ul_mask)
 	button_flag = true;
 }
 
+
 void configure_button(void)
 {
 	/* Configure PIO clock. */
