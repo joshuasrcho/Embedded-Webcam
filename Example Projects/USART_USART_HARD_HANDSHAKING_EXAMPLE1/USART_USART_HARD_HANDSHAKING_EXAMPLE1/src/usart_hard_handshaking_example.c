@@ -226,7 +226,6 @@ void TC0_Handler(void)
 		g_st_nextpacket.ul_addr = (uint32_t)gs_puc_nextbuffer;
 		g_st_nextpacket.ul_size = BUFFER_SIZE;
 		pdc_rx_init(g_p_pdc, &g_st_packet, &g_st_nextpacket);
-			usart_enable_interrupt(BOARD_USART, US_IER_RXBUFF);
 
 		g_ul_bytes_received = 0;
 	}
