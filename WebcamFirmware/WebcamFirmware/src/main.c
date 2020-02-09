@@ -3,13 +3,17 @@
 #include "conf_clock.h"
 #include "camera.h"
 #include "wifi.h"
+#include "timer_interface.h"
 
 int main (void)
 {
+	// Initialization
 	sysclk_init();
 	wdt_disable(WDT);
 	board_init();
 	
+	// Configure peripheral pins
+	configure_tc();
 	configure_usart_wifi();
 	configure_wifi_comm_pin();
 	
