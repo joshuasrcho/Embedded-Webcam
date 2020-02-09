@@ -35,7 +35,7 @@
 
 #define WIFI_COMM_ID                 ID_PIOA
 #define WIFI_COMM_PIO                PIOA
-#define WIFI_COMM_PIN_MSK            PIO_PA13
+#define WIFI_COMM_PIN_MSK            PIO_PA12
 #define WIFI_COMM_ATTR               PIO_IT_RISE_EDGE
 
 

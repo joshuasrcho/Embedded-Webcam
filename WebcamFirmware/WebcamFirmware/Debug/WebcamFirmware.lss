@@ -3,15 +3,15 @@ WebcamFirmware.elf:     file format elf32-littlearm
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         000025dc  00400000  00400000  00010000  2**4
+  0 .text         000025d4  00400000  00400000  00010000  2**4
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .ARM.exidx    00000008  004025dc  004025dc  000125dc  2**2
+  1 .ARM.exidx    00000008  004025d4  004025d4  000125d4  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  2 .relocate     0000043c  20000000  004025e4  00020000  2**3
+  2 .relocate     0000043c  20000000  004025dc  00020000  2**3
                   CONTENTS, ALLOC, LOAD, CODE
-  3 .bss          000004b4  2000043c  00402a20  0002043c  2**2
+  3 .bss          000004b4  2000043c  00402a18  0002043c  2**2
                   ALLOC
-  4 .stack        00003000  200008f0  00402ed4  0002043c  2**0
+  4 .stack        00003000  200008f0  00402ecc  0002043c  2**0
                   ALLOC
   5 .ARM.attributes 0000002a  00000000  00000000  0002043c  2**0
                   CONTENTS, READONLY
@@ -68,7 +68,7 @@ Disassembly of section .text:
   4000e2:	bd10      	pop	{r4, pc}
   4000e4:	2000043c 	.word	0x2000043c
   4000e8:	00000000 	.word	0x00000000
-  4000ec:	004025e4 	.word	0x004025e4
+  4000ec:	004025dc 	.word	0x004025dc
 
 004000f0 <frame_dummy>:
   4000f0:	4b0c      	ldr	r3, [pc, #48]	; (400124 <frame_dummy+0x34>)
@@ -96,9 +96,9 @@ Disassembly of section .text:
   400120:	4718      	bx	r3
   400122:	bf00      	nop
   400124:	00000000 	.word	0x00000000
-  400128:	004025e4 	.word	0x004025e4
+  400128:	004025dc 	.word	0x004025dc
   40012c:	20000440 	.word	0x20000440
-  400130:	004025e4 	.word	0x004025e4
+  400130:	004025dc 	.word	0x004025dc
   400134:	00000000 	.word	0x00000000
 
 00400138 <usart_set_async_baudrate>:
@@ -3520,7 +3520,7 @@ void configure_wifi_comm_pin(void)
   4013dc:	4b0b      	ldr	r3, [pc, #44]	; (40140c <configure_wifi_comm_pin+0x38>)
   4013de:	4798      	blx	r3
 	/* Adjust PIO debounce filter using a 10 Hz filter. */
-	//pio_set_debounce_filter(WIFI_COMM_ID, WIFI_COMM_PIN_MSK, 10);
+	//pio_set_debounce_filter(WIFI_COMM_PIO, WIFI_COMM_PIN_MSK, 10);
 
 	/* Initialize PIO interrupt handler, see PIO definition in conf_board.h
 	**/
@@ -3528,7 +3528,7 @@ void configure_wifi_comm_pin(void)
   4013e0:	4b0b      	ldr	r3, [pc, #44]	; (401410 <configure_wifi_comm_pin+0x3c>)
   4013e2:	9300      	str	r3, [sp, #0]
   4013e4:	2370      	movs	r3, #112	; 0x70
-  4013e6:	f44f 5200 	mov.w	r2, #8192	; 0x2000
+  4013e6:	f44f 5280 	mov.w	r2, #4096	; 0x1000
   4013ea:	210b      	movs	r1, #11
   4013ec:	4809      	ldr	r0, [pc, #36]	; (401414 <configure_wifi_comm_pin+0x40>)
   4013ee:	4c0a      	ldr	r4, [pc, #40]	; (401418 <configure_wifi_comm_pin+0x44>)
@@ -3543,7 +3543,7 @@ void configure_wifi_comm_pin(void)
 
 	/* Enable PIO interrupt lines. */
 	pio_enable_interrupt(WIFI_COMM_PIO, WIFI_COMM_PIN_MSK);
-  4013f8:	f44f 5100 	mov.w	r1, #8192	; 0x2000
+  4013f8:	f44f 5180 	mov.w	r1, #4096	; 0x1000
   4013fc:	4805      	ldr	r0, [pc, #20]	; (401414 <configure_wifi_comm_pin+0x40>)
   4013fe:	4b08      	ldr	r3, [pc, #32]	; (401420 <configure_wifi_comm_pin+0x4c>)
   401400:	4798      	blx	r3
@@ -3591,7 +3591,7 @@ void process_incoming_byte_wifi(uint8_t in_byte){
 void process_data_wifi(){
   401450:	b580      	push	{r7, lr}
   401452:	af00      	add	r7, sp, #0
-	if (strstr(input_line_wifi, "Hello\r\nUnknown command")){
+	if (strstr(input_line_wifi, "Unknown command")){
   401454:	4905      	ldr	r1, [pc, #20]	; (40146c <process_data_wifi+0x1c>)
   401456:	4806      	ldr	r0, [pc, #24]	; (401470 <process_data_wifi+0x20>)
   401458:	4b06      	ldr	r3, [pc, #24]	; (401474 <process_data_wifi+0x24>)
@@ -3952,7 +3952,7 @@ void Reset_Handler(void)
 	while (1);
   401678:	e7fe      	b.n	401678 <Reset_Handler+0xa0>
   40167a:	bf00      	nop
-  40167c:	004025e4 	.word	0x004025e4
+  40167c:	004025dc 	.word	0x004025dc
   401680:	20000000 	.word	0x20000000
   401684:	2000043c 	.word	0x2000043c
   401688:	2000043c 	.word	0x2000043c
@@ -4521,7 +4521,7 @@ int main (void)
   401a34:	00401965 	.word	0x00401965
   401a38:	00401a4d 	.word	0x00401a4d
   401a3c:	20000001 	.word	0x20000001
-  401a40:	004025ac 	.word	0x004025ac
+  401a40:	004025a4 	.word	0x004025a4
   401a44:	40024000 	.word	0x40024000
   401a48:	0040040d 	.word	0x0040040d
 
@@ -4819,7 +4819,7 @@ int main (void)
   401d78:	4e0a      	ldr	r6, [pc, #40]	; (401da4 <__libc_init_array+0x48>)
   401d7a:	4d0b      	ldr	r5, [pc, #44]	; (401da8 <__libc_init_array+0x4c>)
   401d7c:	1b76      	subs	r6, r6, r5
-  401d7e:	f000 fc1b 	bl	4025b8 <_init>
+  401d7e:	f000 fc17 	bl	4025b0 <_init>
   401d82:	10b6      	asrs	r6, r6, #2
   401d84:	bf18      	it	ne
   401d86:	2400      	movne	r4, #0
@@ -4832,10 +4832,10 @@ int main (void)
   401d96:	bd70      	pop	{r4, r5, r6, pc}
   401d98:	bd70      	pop	{r4, r5, r6, pc}
   401d9a:	bf00      	nop
-  401d9c:	004025c4 	.word	0x004025c4
-  401da0:	004025c4 	.word	0x004025c4
-  401da4:	004025cc 	.word	0x004025cc
-  401da8:	004025c4 	.word	0x004025c4
+  401d9c:	004025bc 	.word	0x004025bc
+  401da0:	004025bc 	.word	0x004025bc
+  401da4:	004025c4 	.word	0x004025c4
+  401da8:	004025bc 	.word	0x004025bc
 
 00401dac <critical_factorization>:
   401dac:	e92d 41f0 	stmdb	sp!, {r4, r5, r6, r7, r8, lr}
@@ -5363,10 +5363,10 @@ int main (void)
   4022b2:	2c00      	cmp	r4, #0
   4022b4:	d1f9      	bne.n	4022aa <__libc_fini_array+0x16>
   4022b6:	e8bd 4038 	ldmia.w	sp!, {r3, r4, r5, lr}
-  4022ba:	f000 b987 	b.w	4025cc <_fini>
+  4022ba:	f000 b983 	b.w	4025c4 <_fini>
   4022be:	bf00      	nop
-  4022c0:	004025dc 	.word	0x004025dc
-  4022c4:	004025d8 	.word	0x004025d8
+  4022c0:	004025d4 	.word	0x004025d4
+  4022c4:	004025d0 	.word	0x004025d0
 
 004022c8 <__retarget_lock_acquire_recursive>:
   4022c8:	4770      	bx	lr
@@ -5641,48 +5641,46 @@ int main (void)
   40256a:	e8bd 83f8 	ldmia.w	sp!, {r3, r4, r5, r6, r7, r8, r9, pc}
   40256e:	bf00      	nop
   402570:	20000438 	.word	0x20000438
-  402574:	004025b4 	.word	0x004025b4
+  402574:	004025ac 	.word	0x004025ac
   402578:	00000000 	.word	0x00000000
   40257c:	0001c200 	.word	0x0001c200
   402580:	000000c0 	.word	0x000000c0
   402584:	00000800 	.word	0x00000800
 	...
-  402594:	6c6c6548 	.word	0x6c6c6548
-  402598:	550a0d6f 	.word	0x550a0d6f
-  40259c:	6f6e6b6e 	.word	0x6f6e6b6e
-  4025a0:	63206e77 	.word	0x63206e77
-  4025a4:	616d6d6f 	.word	0x616d6d6f
-  4025a8:	0000646e 	.word	0x0000646e
-  4025ac:	6c6c6548 	.word	0x6c6c6548
-  4025b0:	000a0d6f 	.word	0x000a0d6f
+  402594:	6e6b6e55 	.word	0x6e6b6e55
+  402598:	206e776f 	.word	0x206e776f
+  40259c:	6d6d6f63 	.word	0x6d6d6f63
+  4025a0:	00646e61 	.word	0x00646e61
+  4025a4:	6c6c6548 	.word	0x6c6c6548
+  4025a8:	000a0d6f 	.word	0x000a0d6f
 
-004025b4 <_global_impure_ptr>:
-  4025b4:	20000010                                ... 
+004025ac <_global_impure_ptr>:
+  4025ac:	20000010                                ... 
 
-004025b8 <_init>:
-  4025b8:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-  4025ba:	bf00      	nop
-  4025bc:	bcf8      	pop	{r3, r4, r5, r6, r7}
-  4025be:	bc08      	pop	{r3}
-  4025c0:	469e      	mov	lr, r3
-  4025c2:	4770      	bx	lr
+004025b0 <_init>:
+  4025b0:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+  4025b2:	bf00      	nop
+  4025b4:	bcf8      	pop	{r3, r4, r5, r6, r7}
+  4025b6:	bc08      	pop	{r3}
+  4025b8:	469e      	mov	lr, r3
+  4025ba:	4770      	bx	lr
 
-004025c4 <__init_array_start>:
-  4025c4:	00402275 	.word	0x00402275
+004025bc <__init_array_start>:
+  4025bc:	00402275 	.word	0x00402275
 
-004025c8 <__frame_dummy_init_array_entry>:
-  4025c8:	004000f1                                ..@.
+004025c0 <__frame_dummy_init_array_entry>:
+  4025c0:	004000f1                                ..@.
 
-004025cc <_fini>:
-  4025cc:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
-  4025ce:	bf00      	nop
-  4025d0:	bcf8      	pop	{r3, r4, r5, r6, r7}
-  4025d2:	bc08      	pop	{r3}
-  4025d4:	469e      	mov	lr, r3
-  4025d6:	4770      	bx	lr
+004025c4 <_fini>:
+  4025c4:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+  4025c6:	bf00      	nop
+  4025c8:	bcf8      	pop	{r3, r4, r5, r6, r7}
+  4025ca:	bc08      	pop	{r3}
+  4025cc:	469e      	mov	lr, r3
+  4025ce:	4770      	bx	lr
 
-004025d8 <__fini_array_start>:
-  4025d8:	004000cd 	.word	0x004000cd
+004025d0 <__fini_array_start>:
+  4025d0:	004000cd 	.word	0x004000cd
 
 Disassembly of section .relocate:
 

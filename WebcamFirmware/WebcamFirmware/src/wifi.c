@@ -80,7 +80,7 @@ void configure_wifi_comm_pin(void)
 	pmc_enable_periph_clk(WIFI_COMM_ID);
 
 	/* Adjust PIO debounce filter using a 10 Hz filter. */
-	//pio_set_debounce_filter(WIFI_COMM_ID, WIFI_COMM_PIN_MSK, 10);
+	//pio_set_debounce_filter(WIFI_COMM_PIO, WIFI_COMM_PIN_MSK, 10);
 
 	/* Initialize PIO interrupt handler, see PIO definition in conf_board.h
 	**/
