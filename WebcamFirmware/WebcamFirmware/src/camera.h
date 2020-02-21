@@ -9,12 +9,17 @@
 #include <asf.h>
 
 // Camera pin definitions, Camera TWI parameters, Camera function and variable declarations.
+
+// Camera VSYNC pin.
 #define CAM_VSYNC_ID                 ID_PIOA
 #define CAM_VSYNC_PIO                PIOA
 #define CAM_VSYNC_PIN_MSK            PIO_PA15
 #define CAM_VSYNC_ATTR               PIO_IT_RISE_EDGE
 
-volatile uint32_t vsync_flag;
+/* TWI board defines. */
+#define ID_BOARD_TWI                   ID_TWI0
+#define BOARD_TWI                      TWI0
+#define BOARD_TWI_IRQn                 TWI0_IRQn
 
 void vsync_handler(uint32_t ul_id, uint32_t ul_mask);
 void init_vsync_interrupts(void);

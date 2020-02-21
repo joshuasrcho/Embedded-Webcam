@@ -36,9 +36,10 @@
     <option id="common.services.delay" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.basic.gpio" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.services.ioport" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.basic.serial" value="Add" config="" content-id="Atmel.ASF" />
     <option id="common.utils.stdio.stdio_serial" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam.drivers.wdt" value="Add" config="" content-id="Atmel.ASF" />
-    <option id="common.services.basic.serial" value="Add" config="" content-id="Atmel.ASF" />
+    <option id="common.services.basic.twi" value="Add" config="" content-id="Atmel.ASF" />
     <option id="sam.utils.linker_scripts#atsam4s8" value="Add" config="" content-id="Atmel.ASF" />
   </options>
   <configurations>
@@ -214,6 +215,12 @@
     <file path="src/ASF/common/utils/stdio/read.c" framework="" version="3.47.0" source="common\utils\stdio\read.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/common/utils/stdio/write.c" framework="" version="3.47.0" source="common\utils\stdio\write.c" changed="False" content-id="Atmel.ASF" />
     <file path="src/ASF/common/utils/stdio/stdio_serial/stdio_serial.h" framework="" version="3.47.0" source="common\utils\stdio\stdio_serial\stdio_serial.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/twi/twi_slave.h" framework="" version="3.47.0" source="common\services\twi\twi_slave.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/twi/sam_twi/twi_master.h" framework="" version="3.47.0" source="common\services\twi\sam_twi\twi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/twi/twi_master.h" framework="" version="3.47.0" source="common\services\twi\twi_master.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/common/services/twi/sam_twi/twi_slave.h" framework="" version="3.47.0" source="common\services\twi\sam_twi\twi_slave.h" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam/drivers/twi/twi.c" framework="" version="3.47.0" source="sam\drivers\twi\twi.c" changed="False" content-id="Atmel.ASF" />
+    <file path="src/ASF/sam/drivers/twi/twi.h" framework="" version="3.47.0" source="sam\drivers\twi\twi.h" changed="False" content-id="Atmel.ASF" />
   </files>
   <documentation help="http://asf.atmel.com/docs/3.47.0/common.applications.user_application.user_board.sam4s/html/index.html" />
   <offline-documentation help="" />
@@ -283,6 +290,8 @@
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam/drivers/usart</Value>
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
+      <Value>../src/ASF/common/services/twi</Value>
+      <Value>../src/ASF/sam/drivers/twi</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.level>Optimize for size (-Os)</armgcc.compiler.optimization.level>
@@ -328,6 +337,8 @@
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam/drivers/usart</Value>
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
+      <Value>../src/ASF/common/services/twi</Value>
+      <Value>../src/ASF/sam/drivers/twi</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
   <armgcc.preprocessingassembler.general.AssemblerFlags>-DARM_MATH_CM4=true -DBOARD=USER_BOARD -Dprintf=iprintf -Dscanf=iscanf</armgcc.preprocessingassembler.general.AssemblerFlags>
@@ -356,6 +367,8 @@
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam/drivers/usart</Value>
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
+      <Value>../src/ASF/common/services/twi</Value>
+      <Value>../src/ASF/sam/drivers/twi</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
 </ArmGcc>
@@ -403,6 +416,8 @@
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam/drivers/usart</Value>
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
+      <Value>../src/ASF/common/services/twi</Value>
+      <Value>../src/ASF/sam/drivers/twi</Value>
     </ListValues>
   </armgcc.compiler.directories.IncludePaths>
   <armgcc.compiler.optimization.OtherFlags>-fdata-sections</armgcc.compiler.optimization.OtherFlags>
@@ -449,6 +464,8 @@
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam/drivers/usart</Value>
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
+      <Value>../src/ASF/common/services/twi</Value>
+      <Value>../src/ASF/sam/drivers/twi</Value>
     </ListValues>
   </armgcc.assembler.general.IncludePaths>
   <armgcc.assembler.debugging.DebugLevel>Default (-g)</armgcc.assembler.debugging.DebugLevel>
@@ -478,6 +495,8 @@
       <Value>../src/ASF/common/services/serial</Value>
       <Value>../src/ASF/sam/drivers/usart</Value>
       <Value>../src/ASF/common/utils/stdio/stdio_serial</Value>
+      <Value>../src/ASF/common/services/twi</Value>
+      <Value>../src/ASF/sam/drivers/twi</Value>
     </ListValues>
   </armgcc.preprocessingassembler.general.IncludePaths>
   <armgcc.preprocessingassembler.debugging.DebugLevel>Default (-Wa,-g)</armgcc.preprocessingassembler.debugging.DebugLevel>
@@ -501,6 +520,8 @@
     <Folder Include="src\ASF\common\services\ioport\sam\" />
     <Folder Include="src\ASF\common\services\serial\" />
     <Folder Include="src\ASF\common\services\serial\sam_uart\" />
+    <Folder Include="src\ASF\common\services\twi\" />
+    <Folder Include="src\ASF\common\services\twi\sam_twi\" />
     <Folder Include="src\ASF\common\utils\" />
     <Folder Include="src\ASF\common\utils\interrupt\" />
     <Folder Include="src\ASF\common\utils\stdio\" />
@@ -509,6 +530,7 @@
     <Folder Include="src\ASF\sam\drivers\" />
     <Folder Include="src\ASF\sam\drivers\pio\" />
     <Folder Include="src\ASF\sam\drivers\pmc\" />
+    <Folder Include="src\ASF\sam\drivers\twi\" />
     <Folder Include="src\ASF\sam\drivers\uart\" />
     <Folder Include="src\ASF\sam\drivers\usart\" />
     <Folder Include="src\ASF\sam\drivers\wdt\" />
@@ -539,6 +561,18 @@
     <Folder Include="src\config\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\ASF\common\services\twi\twi_slave.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\twi\sam_twi\twi_master.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\twi\twi_master.h">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="src\ASF\common\services\twi\sam_twi\twi_slave.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\common\utils\stdio\read.c">
       <SubType>compile</SubType>
     </Compile>
@@ -548,6 +582,12 @@
     <Compile Include="src\ASF\common\utils\stdio\write.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="src\ASF\sam\drivers\twi\twi.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="src\ASF\sam\drivers\twi\twi.h">
+      <SubType>compile</SubType>
+    </None>
     <Compile Include="src\ASF\sam\drivers\usart\usart.c">
       <SubType>compile</SubType>
     </Compile>

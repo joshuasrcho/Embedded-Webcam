@@ -40,7 +40,7 @@
 
 #define WIFI_SETUP_ID                 ID_PIOA
 #define WIFI_SETUP_PIO                PIOA
-#define WIFI_SETUP_PIN_MSK            PIO_PA28
+#define WIFI_SETUP_PIN_MSK            PIO_PA0
 #define WIFI_SETUP_ATTR               PIO_PULLUP | PIO_DEBOUNCE | PIO_IT_EDGE
 
 

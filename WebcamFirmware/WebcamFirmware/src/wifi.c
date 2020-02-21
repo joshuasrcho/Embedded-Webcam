@@ -22,7 +22,7 @@ void wifi_usart_handler(void)
 	}
 }
 
-static void wifi_command_response_handler(uint32_t ul_id, uint32_t ul_mask)
+void wifi_command_response_handler(uint32_t ul_id, uint32_t ul_mask)
 {
 	unused(ul_id);
 	unused(ul_mask);
@@ -47,7 +47,6 @@ void configure_usart_wifi(void)
 	gpio_configure_pin(PIN_USART0_TXD_IDX, PIN_USART0_TXD_FLAGS);
 	gpio_configure_pin(PIN_USART0_CTS_IDX, PIN_USART0_CTS_FLAGS);
 	//gpio_configure_pin(PIN_USART0_RTS_IDX, PIN_USART0_RTS_FLAGS);
-	
 	
 	static uint32_t ul_sysclk;
 	const sam_usart_opt_t usart_console_settings = {
@@ -110,7 +109,7 @@ void configure_wifi_web_setup_pin(void)
 	/* Initialize PIO interrupt handler, see PIO definition in conf_board.h
 	**/
 	pio_handler_set(WIFI_SETUP_PIO, WIFI_SETUP_ID, WIFI_SETUP_PIN_MSK,
-			WIFI_SETUP_ATTR, wifi_command_response_handler);
+			WIFI_SETUP_ATTR, wifi_web_setup_handler);
 
 	/* Enable PIO controller IRQs. */
 	NVIC_EnableIRQ((IRQn_Type)WIFI_SETUP_ID);
@@ -132,7 +131,8 @@ void process_data_wifi(){
 
 void write_wifi_command(char* comm, uint8_t cnt)
 {
-	;
+	usart_write_line(WIFI_USART,comm);
+	cnt++;
 }
 
 void write_image_to_file(void)
