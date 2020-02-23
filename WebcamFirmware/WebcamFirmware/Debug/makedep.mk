@@ -6,6 +6,8 @@ src\ASF\common\utils\stdio\read.c
 
 src\ASF\common\utils\stdio\write.c
 
+src\ASF\sam\drivers\twi\twi.c
+
 src\ASF\sam\drivers\usart\usart.c
 
 src\ASF\common\services\serial\usart_serial.c
@@ -27,6 +29,8 @@ src\ASF\sam\drivers\pmc\pmc.c
 src\ASF\sam\drivers\pmc\sleep.c
 
 src\camera.c
+
+src\ov2640.c
 
 src\wifi.c
 
