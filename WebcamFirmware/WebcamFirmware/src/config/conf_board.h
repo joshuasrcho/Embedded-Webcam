@@ -7,7 +7,7 @@
 
 
 // Pin definitions for general board.
-#define LED_PIN PIO_PA20_IDX
+#define WIFI_RESET_PIN PIO_PA19_IDX
 #define WIFI_CTS_PIN PIO_PA7_IDX
 #define WIFI_SETUP_BUTTON_PIN PIO_PA0_IDX
 

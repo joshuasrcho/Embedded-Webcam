@@ -90,6 +90,9 @@
 // From module: System Clock Control - SAM4S implementation
 #include <sysclk.h>
 
+// From module: TC - Timer Counter
+#include <tc.h>
+
 // From module: TWI - Two-Wire Interface - SAM implementation
 #include <sam_twi/twi_master.h>
 #include <sam_twi/twi_slave.h>

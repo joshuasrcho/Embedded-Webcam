@@ -3,7 +3,7 @@
 #include "conf_clock.h"
 #include "camera.h"
 #include "wifi.h"
-//#include "timer_interface.h"
+#include "timer_interface.h"
 
 int main (void)
 {
@@ -11,16 +11,32 @@ int main (void)
 	sysclk_init();
 	wdt_disable(WDT);
 	board_init();
+	init_camera();
 	
-	// Configure peripheral pins
-	//configure_tc();
+	// Configure peripheral pins, Initialize WiFi and camera modules
+	//configure_camera();
+	configure_tc();
 	configure_usart_wifi();
 	configure_wifi_comm_pin();
-	//char stringname[20] = "Hello\r\n";
+	configure_wifi_web_setup_pin();
+	
+	
+	
+	// Reset wifi module
+	ioport_set_pin_level(WIFI_RESET_PIN, false);
+	delay_ms(100);
+	ioport_set_pin_level(WIFI_RESET_PIN, true);
+	
+	// Tell the WiFi to turn off the command prompt and command  echo
+	write_wifi_command("set sy c p off\r\n",30);
+	write_wifi_command("set sy c e off\r\n",30);
+	
 	while (1){
-		delay_ms(500);
-		//write_wifi_command(stringname,1);
-		usart_write_line(WIFI_USART, "Hello\r\n");
+		if (wifi_web_setup_flag){
+			wifi_web_setup_flag = 0;
+			write_wifi_command("setup web\r\n",3);
+			} // wait for wifi web setup flag high
+		 
 	}
 	
 }

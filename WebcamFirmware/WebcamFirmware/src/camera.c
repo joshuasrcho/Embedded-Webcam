@@ -28,14 +28,14 @@ void init_vsync_interrupts(void)
 
 	/* Initialize PIO interrupt handler, see PIO definition in conf_board.h
 	**/
-	pio_handler_set(CAM_VSYNC_PIO, CAM_VSYNC_ID, CAM_VSYNC_PIN_MSK,
-			CAM_VSYNC_ATTR, vsync_handler);
+	pio_handler_set(CAM_VSYNC_PIO, CAM_VSYNC_ID, CAM_VSYNC_MASK,
+			CAM_VSYNC_TYPE, vsync_handler);
 
 	/* Enable PIO controller IRQs. */
 	NVIC_EnableIRQ((IRQn_Type)CAM_VSYNC_ID);
 
 	/* Enable PIO interrupt lines. */
-	pio_enable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_PIN_MSK);
+	pio_enable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_MASK);
 }
 
 
@@ -86,7 +86,6 @@ uint32_t ul_size)
 
 void init_camera(void)
 {
-	
 
 	/* Init Vsync handler*/
 	init_vsync_interrupts();
@@ -149,7 +148,7 @@ uint8_t start_capture(void)
 	cap_rows = IMAGE_HEIGHT;
 
 	/* Enable vsync interrupt*/
-	pio_enable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_PIN_MSK);
+	pio_enable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_MASK);
 
 	/* Capture acquisition will start on rising edge of Vsync signal.
 	 * So wait g_vsync_flag = 1 before start process
@@ -158,7 +157,7 @@ uint8_t start_capture(void)
 	}
 
 	/* Disable vsync interrupt*/
-	pio_disable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_PIN_MSK);
+	pio_disable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_MASK);
 
 	/* Enable pio capture*/
 	pio_capture_enable(CAM_DATA_BUS_PIO);
@@ -178,4 +177,8 @@ uint8_t start_capture(void)
 
 	/* Reset vsync flag*/
 	vsync_flag = false;
+}
+
+uint8_t find_image_len(void){
+	return 0;
 }

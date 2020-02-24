@@ -3,6 +3,7 @@
  */ 
 
 #include "wifi.h"
+#include "timer_interface.h"
 
 volatile uint32_t received_byte_wifi = 0;
 volatile uint32_t wifi_web_setup_flag = 0;
@@ -124,15 +125,19 @@ void process_incoming_byte_wifi(uint8_t in_byte){
 }
 
 void process_data_wifi(){
-	if (strstr(input_line_wifi, "Unknown command")){
-		ioport_toggle_pin_level(LED_PIN);
-	}
+	//if (strstr(input_line_wifi, "Unknown command")){
+	//	ioport_toggle_pin_level(LED_PIN);
+	//}
+	;
 }
 
 void write_wifi_command(char* comm, uint8_t cnt)
 {
 	usart_write_line(WIFI_USART,comm);
-	cnt++;
+	while ((counts<cnt) & (received_byte_wifi==0) ){;}
+		if (counts>cnt){
+			write_wifi_command(comm,cnt);// timeout. Do something
+		}
 }
 
 void write_image_to_file(void)

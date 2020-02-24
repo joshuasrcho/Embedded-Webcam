@@ -1,5 +1,13 @@
-src/wifi.d src/wifi.o: ../src/wifi.c ../src/wifi.h ../src/asf.h \
- ../src/ASF/sam/utils/compiler.h \
+src/ASF/sam/drivers/tc/tc.d src/ASF/sam/drivers/tc/tc.o: \
+ ../src/ASF/sam/drivers/tc/tc.c \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\assert.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h \
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\features.h \
+ ../src/ASF/sam/drivers/tc/tc.h ../src/ASF/sam/utils/compiler.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stddef.h \
  ../src/ASF/common/utils/parts.h \
  ../src/ASF/sam/utils/preprocessor/preprocessor.h \
@@ -13,8 +21,6 @@ src/wifi.d src/wifi.o: ../src/wifi.c ../src/wifi.h ../src/asf.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_default_types.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\features.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_stdint.h \
  ../src/ASF/thirdparty/CMSIS/Include/core_cm4.h \
@@ -78,10 +84,6 @@ src/wifi.d src/wifi.o: ../src/wifi.c ../src/wifi.h ../src/asf.h \
  ../src/ASF/sam/utils/cmsis/sam4s/include/instance/instance_gpbr.h \
  ../src/ASF/sam/utils/cmsis/sam4s/include/pio/pio_sam4s8b.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdio.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdarg.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\reent.h \
@@ -105,46 +107,23 @@ src/wifi.d src/wifi.o: ../src/wifi.c ../src/wifi.h ../src/asf.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\stdlib.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\alloca.h \
  ../src/ASF/common/utils/interrupt.h \
- ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h \
- ../src/ASF/sam/utils/status_codes.h \
- ../src/ASF/common/boards/user_board/user_board.h \
- ../src/config/conf_board.h ../src/ASF/common/services/delay/delay.h \
- ../src/ASF/common/services/clock/sysclk.h ../src/config/conf_clock.h \
- ../src/ASF/common/services/clock/sam4s/sysclk.h \
- ../src/ASF/common/services/clock/osc.h \
- ../src/ASF/common/services/clock/sam4s/osc.h \
- ../src/ASF/common/boards/board.h ../src/ASF/sam/drivers/pmc/pmc.h \
- ../src/ASF/common/services/clock/pll.h \
- ../src/ASF/common/services/clock/sam4s/pll.h \
- ../src/ASF/common/services/delay/sam/cycle_counter.h \
- ../src/ASF/common/services/gpio/gpio.h \
- ../src/ASF/common/services/gpio/sam_gpio/sam_gpio.h \
- ../src/ASF/sam/drivers/pio/pio.h \
- ../src/ASF/common/services/ioport/ioport.h \
- ../src/ASF/common/services/ioport/sam/ioport_pio.h \
- ../src/ASF/sam/drivers/pmc/sleep.h \
- ../src/ASF/common/utils/stdio/stdio_serial/stdio_serial.h \
- ../src/ASF/common/services/serial/serial.h \
- ../src/ASF/common/services/serial/sam_uart/uart_serial.h \
- ../src/ASF/sam/drivers/uart/uart.h ../src/ASF/sam/drivers/usart/usart.h \
- ../src/config/conf_uart_serial.h ../src/ASF/sam/drivers/tc/tc.h \
- ../src/ASF/common/services/twi/sam_twi/twi_master.h \
- ../src/ASF/sam/drivers/twi/twi.h \
- ../src/ASF/common/services/twi/sam_twi/twi_slave.h \
- ../src/ASF/common/services/twi/twi_master.h \
- ../src/ASF/common/services/twi/sam_twi/twi_master.h \
- ../src/ASF/common/services/twi/twi_slave.h \
- ../src/ASF/common/services/twi/sam_twi/twi_slave.h \
- ../src/ASF/sam/drivers/wdt/wdt.h \
- ../src/ASF/sam/drivers/pio/pio_handler.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h \
- c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h \
- ../src/timer_interface.h
+ ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h
 
-../src/wifi.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\assert.h:
 
-../src/asf.h:
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h:
+
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\features.h:
+
+../src/ASF/sam/drivers/tc/tc.h:
 
 ../src/ASF/sam/utils/compiler.h:
 
@@ -173,10 +152,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gc
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdint.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\_default_types.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\features.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_newlib_version.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\_intsup.h:
 
@@ -304,14 +279,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\stdio.h:
 
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\_ansi.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\newlib.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\config.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\machine\ieeefp.h:
-
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\cdefs.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\lib\gcc\arm-none-eabi\6.3.1\include\stdarg.h:
@@ -359,83 +326,3 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-no
 ../src/ASF/common/utils/interrupt.h:
 
 ../src/ASF/common/utils/interrupt/interrupt_sam_nvic.h:
-
-../src/ASF/sam/utils/status_codes.h:
-
-../src/ASF/common/boards/user_board/user_board.h:
-
-../src/config/conf_board.h:
-
-../src/ASF/common/services/delay/delay.h:
-
-../src/ASF/common/services/clock/sysclk.h:
-
-../src/config/conf_clock.h:
-
-../src/ASF/common/services/clock/sam4s/sysclk.h:
-
-../src/ASF/common/services/clock/osc.h:
-
-../src/ASF/common/services/clock/sam4s/osc.h:
-
-../src/ASF/common/boards/board.h:
-
-../src/ASF/sam/drivers/pmc/pmc.h:
-
-../src/ASF/common/services/clock/pll.h:
-
-../src/ASF/common/services/clock/sam4s/pll.h:
-
-../src/ASF/common/services/delay/sam/cycle_counter.h:
-
-../src/ASF/common/services/gpio/gpio.h:
-
-../src/ASF/common/services/gpio/sam_gpio/sam_gpio.h:
-
-../src/ASF/sam/drivers/pio/pio.h:
-
-../src/ASF/common/services/ioport/ioport.h:
-
-../src/ASF/common/services/ioport/sam/ioport_pio.h:
-
-../src/ASF/sam/drivers/pmc/sleep.h:
-
-../src/ASF/common/utils/stdio/stdio_serial/stdio_serial.h:
-
-../src/ASF/common/services/serial/serial.h:
-
-../src/ASF/common/services/serial/sam_uart/uart_serial.h:
-
-../src/ASF/sam/drivers/uart/uart.h:
-
-../src/ASF/sam/drivers/usart/usart.h:
-
-../src/config/conf_uart_serial.h:
-
-../src/ASF/sam/drivers/tc/tc.h:
-
-../src/ASF/common/services/twi/sam_twi/twi_master.h:
-
-../src/ASF/sam/drivers/twi/twi.h:
-
-../src/ASF/common/services/twi/sam_twi/twi_slave.h:
-
-../src/ASF/common/services/twi/twi_master.h:
-
-../src/ASF/common/services/twi/sam_twi/twi_master.h:
-
-../src/ASF/common/services/twi/twi_slave.h:
-
-../src/ASF/common/services/twi/sam_twi/twi_slave.h:
-
-../src/ASF/sam/drivers/wdt/wdt.h:
-
-../src/ASF/sam/drivers/pio/pio_handler.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\string.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\xlocale.h:
-
-c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\arm\arm-gnu-toolchain\arm-none-eabi\include\sys\string.h:
-
-../src/timer_interface.h:
