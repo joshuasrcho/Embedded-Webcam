@@ -51,4 +51,10 @@ void board_init(void)
 		gpio_configure_pin(CAM_DATA_BUS_D6, CAM_DATA_BUS_FLAGS);
 		gpio_configure_pin(CAM_DATA_BUS_D7, CAM_DATA_BUS_FLAGS);
 	#endif	
+	
+	/* Configure PCK0 pins */
+	#ifdef CONF_BOARD_PCK1
+		gpio_configure_pin(PIN_PCK1, PIN_PCK1_FLAGS);
+	#endif
+
 }

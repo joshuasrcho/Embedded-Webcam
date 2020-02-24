@@ -136,7 +136,7 @@ void write_wifi_command(char* comm, uint8_t cnt)
 	usart_write_line(WIFI_USART,comm);
 	while ((counts<cnt) & (received_byte_wifi==0) ){;}
 		if (counts>cnt){
-			write_wifi_command(comm,cnt);// timeout. Do something
+			return;// timeout
 		}
 }
 

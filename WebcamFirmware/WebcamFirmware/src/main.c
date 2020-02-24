@@ -14,7 +14,7 @@ int main (void)
 	init_camera();
 	
 	// Configure peripheral pins, Initialize WiFi and camera modules
-	//configure_camera();
+	configure_camera();
 	configure_tc();
 	configure_usart_wifi();
 	configure_wifi_comm_pin();
@@ -28,8 +28,8 @@ int main (void)
 	ioport_set_pin_level(WIFI_RESET_PIN, true);
 	
 	// Tell the WiFi to turn off the command prompt and command  echo
-	write_wifi_command("set sy c p off\r\n",30);
-	write_wifi_command("set sy c e off\r\n",30);
+	write_wifi_command("set sy c p off\r\n",2);
+	write_wifi_command("set sy c e off\r\n",2);
 	
 	while (1){
 		if (wifi_web_setup_flag){

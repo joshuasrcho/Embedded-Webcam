@@ -48,8 +48,8 @@
 /** Configure TWI0 pins (for OV2640  communications). */
 #define CONF_BOARD_TWI0
 
-/** Configure PCK0 pins (for OV2640  communications). */
-#define CONF_BOARD_PCK0
+/** Configure PCK1 pins (for OV2640  communications). */
+#define CONF_BOARD_PCK1
 
 /** TWI0 data pin */
 #define PIN_TWI_TWD0                   {PIO_PA3A_TWD0, PIOA, ID_PIOA, \
@@ -57,6 +57,9 @@
 /** TWI0 clock pin */
 #define PIN_TWI_TWCK0                  {PIO_PA4A_TWCK0, PIOA, ID_PIOA,	\
 										PIO_PERIPH_A, PIO_DEFAULT}
+/** PCK1 */
+#define PIN_PCK1                       (PIO_PA17_IDX)
+#define PIN_PCK1_FLAGS                 (PIO_PERIPH_B | PIO_DEFAULT)
 
 /** TWI0 Data pins definition */
 #define TWI0_DATA_GPIO                 PIO_PA3_IDX

@@ -93,13 +93,16 @@ void init_camera(void)
 	/* Init PIO capture*/
 	pio_capture_init(CAM_DATA_BUS_PIO, CAM_DATA_BUS_ID);
 
+	gpio_configure_pin(PIN_PCK1, PIN_PCK1_FLAGS);
 
-	/* Init PCK0 to work at 24 Mhz */
-	/* 96/4=24 Mhz */
-	PMC->PMC_PCK[0] = (PMC_PCK_PRES_CLK_4 | PMC_PCK_CSS_PLLA_CLK);
-	PMC->PMC_SCER = PMC_SCER_PCK0;
-	while (!(PMC->PMC_SCSR & PMC_SCSR_PCK0)) {
+	/* Init PCK1 to work at 36 Mhz */
+	/* 72/2=36 Mhz */
+	PMC->PMC_PCK[1] = (PMC_PCK_PRES_CLK_2 | PMC_PCK_CSS_PLLB_CLK);
+	PMC->PMC_SCER = PMC_SCER_PCK1;
+	while (!(PMC->PMC_SCSR & PMC_SCSR_PCK1)) {
 	}
+	
+	
 
 	configure_twi();
 
@@ -131,7 +134,7 @@ void configure_camera(void){
 	while (ov_init(BOARD_TWI) == 1) {
 	}
 
-	/* ov7740 configuration */
+	/* ov2640 configuration */
 	ov_configure(BOARD_TWI, QVGA_YUV422_20FPS);
 
 	/* Wait 3 seconds to let the image sensor to adapt to environment */
@@ -180,5 +183,6 @@ uint8_t start_capture(void)
 }
 
 uint8_t find_image_len(void){
+	//usart_put_char()
 	return 0;
 }

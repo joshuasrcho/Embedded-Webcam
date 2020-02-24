@@ -68,9 +68,9 @@
 
 // ===== PLL1 (B) Options   (Fpll = (Fclk * PLL_mul) / PLL_div)
 // Use mul and div effective values here.
-//#define CONFIG_PLL1_SOURCE          PLL_SRC_MAINCK_XTAL
-//#define CONFIG_PLL1_MUL             16
-//#define CONFIG_PLL1_DIV             2
+#define CONFIG_PLL1_SOURCE          PLL_SRC_MAINCK_XTAL
+#define CONFIG_PLL1_MUL             6
+#define CONFIG_PLL1_DIV             1
 
 // ===== USB Clock Source Options   (Fusb = FpllX / USB_div)
 // Use div effective value here.
