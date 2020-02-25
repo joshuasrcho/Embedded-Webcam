@@ -6,7 +6,7 @@
 #include "ov2640.h"
 
 volatile uint32_t vsync_flag = false;
-IMG_LENGTH = 0 ;
+int IMG_LENGTH = 0 ;
 
 void vsync_handler(uint32_t ul_id, uint32_t ul_mask)
 {
@@ -154,12 +154,6 @@ void configure_camera(void){
 
 uint8_t start_capture(void)
 {
-	/* Set capturing destination address*/
-	//cap_dest_buf = (uint8_t *)CAP_DEST;
-
-	/* Set cap_rows value*/
-	//cap_rows = IMAGE_HEIGHT;
-
 	/* Enable vsync interrupt*/
 	pio_enable_interrupt(CAM_VSYNC_PIO, CAM_VSYNC_MASK);
 

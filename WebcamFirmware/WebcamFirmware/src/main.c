@@ -58,7 +58,6 @@ int main (void)
 				if(StreamOpen){
 					if(start_capture()){
 						write_image_to_file();
-						StreamOpen = 0; 
 					}
 				}
 				else{

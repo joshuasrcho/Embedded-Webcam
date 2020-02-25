@@ -8,6 +8,7 @@
 
 volatile uint32_t received_byte_wifi = 0;
 volatile uint32_t wifi_web_setup_flag = 0;
+volatile uint32_t wifi_comm_flag = 0;
 volatile unsigned int input_pos_wifi = 0;
 volatile uint32_t Ready2TransferFlag = 0;
 volatile uint32_t StreamOpen = 0;
@@ -31,6 +32,7 @@ void wifi_command_response_handler(uint32_t ul_id, uint32_t ul_mask)
 	unused(ul_id);
 	unused(ul_mask);
 
+	wifi_comm_flag = true;
 	process_data_wifi();
 	for(int jj=0; jj<1000; jj++) input_line_wifi[jj] = 0;
 	input_pos_wifi = 0;
@@ -141,10 +143,9 @@ void process_data_wifi(){
 
 void write_wifi_command(char* comm, uint8_t cnt){
 	usart_write_line(WIFI_USART,comm);
-	while ((counts<cnt) & (received_byte_wifi==0) ){;}
-		if (counts>cnt){
-			return;// timeout
-		}
+	while ((counts<cnt) & (wifi_comm_flag==0) ){;}
+		wifi_comm_flag=0;
+		return;
 }
 
 void write_image_to_file(void){
@@ -154,7 +155,7 @@ void write_image_to_file(void){
 	
 	while(!Ready2TransferFlag){;}
 	
-	for(int i=IMG_START;i<IMG_END;i++){
+	for(int i=IMG_START;i<=IMG_END;i++){
 		usart_putchar(WIFI_USART,IMG_BUFFER[i]);
 	}
 	
