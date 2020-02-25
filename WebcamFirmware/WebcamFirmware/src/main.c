@@ -21,7 +21,6 @@ int main (void)
 	configure_wifi_web_setup_pin();
 	
 	
-	
 	// Reset wifi module
 	ioport_set_pin_level(WIFI_RESET_PIN, false);
 	delay_ms(100);
@@ -31,12 +30,43 @@ int main (void)
 	write_wifi_command("set sy c p off\r\n",2);
 	write_wifi_command("set sy c e off\r\n",2);
 	
+	while(!ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
+		if (wifi_web_setup_flag){
+			wifi_web_setup_flag = 0;
+			write_wifi_command("setup web\r\n",2);
+		}
+	}
+
 	while (1){
 		if (wifi_web_setup_flag){
 			wifi_web_setup_flag = 0;
-			write_wifi_command("setup web\r\n",3);
-			} // wait for wifi web setup flag high
-		 
+			write_wifi_command("setup web\r\n",2);
+			while(!ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
+				// wait 10 seconds. If connected before 10 seconds, break.
+				// Else, reset
+			}
+		}
+		else{
+			if(!ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
+				// Reset wifi module
+				ioport_set_pin_level(WIFI_RESET_PIN, false);
+				delay_ms(100);
+				ioport_set_pin_level(WIFI_RESET_PIN, true);
+			}
+			else{
+				write_wifi_command("poll all\r\n",2); // checking to see any open stream
+				if(StreamOpen){
+					if(start_capture()){
+						write_image_to_file();
+						StreamOpen = 0; 
+					}
+				}
+				else{
+					delay_ms(1000);
+				}
+			}
+		}		
 	}
-	
 }
+	
+

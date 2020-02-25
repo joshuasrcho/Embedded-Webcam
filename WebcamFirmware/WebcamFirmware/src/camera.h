@@ -8,9 +8,24 @@
 
 #include <asf.h>
 
+// Allocating space for image
+#define IMG_PRED_SIZE 100000 
+uint8_t IMG_BUFFER[IMG_PRED_SIZE];
+int IMG_START;
+int IMG_END;
+int IMG_LENGTH;	 // Number of bytes for the image data
+
 // Camera pin definitions, Camera TWI parameters, Camera function and variable declarations.
 #define IMAGE_WIDTH                    (320UL)
 #define IMAGE_HEIGHT                   (240UL)
+
+/** Camera_HSYNC pin */
+#define OV_HSYNC_GPIO                  PIO_PA16_IDX
+#define OV_HSYNC_FLAGS                 (PIO_PULLUP | PIO_IT_RISE_EDGE)
+#define OV_HSYNC_MASK                  PIO_PA16
+#define OV_HSYNC_PIO                   PIOA
+#define OV_HSYNC_ID                    ID_PIOA
+#define OV_HSYNC_TYPE                  PIO_PULLUP
 
 // Camera VSYNC pin.
 #define CAM_VSYNC_GPIO                  PIO_PA15_IDX
@@ -36,20 +51,17 @@
 #define CAM_DATA_BUS_TYPE               PIO_INPUT
 #define CAM_DATA_BUS_ATTR               PIO_DEFAULT
 
-              
-/* SRAM board defines. */
-#define SRAM_BASE                      (0x60000000UL) // SRAM adress
-#define SRAM_CS                        (0UL)
-#define CAP_DEST                       SRAM_BASE
+/** OV_RST pin definition */
+#define CAM_RST_GPIO                    PIO_PA20_IDX
+#define CAM_RST_FLAGS                   (PIO_OUTPUT_1 | PIO_DEFAULT)
+#define CAM_RST_MASK                    PIO_PA20
+#define CAM_RST_PIO                     PIOA
+#define CAM_RST_ID                      ID_PIOA
+#define CAM_RST_TYPE                    PIO_OUTPUT_1
 
-/** Enable OV2640 image sensor. */
-#define CONF_BOARD_OV2640_IMAGE_SENSOR
-
-/** Configure TWI0 pins (for OV2640  communications). */
-#define CONF_BOARD_TWI0
-
-/** Configure PCK1 pins (for OV2640  communications). */
-#define CONF_BOARD_PCK1
+/** PCK1 */
+#define PIN_PCK1                       (PIO_PA17_IDX)
+#define PIN_PCK1_FLAGS                 (PIO_PERIPH_B | PIO_DEFAULT)              
 
 /** TWI0 data pin */
 #define PIN_TWI_TWD0                   {PIO_PA3A_TWD0, PIOA, ID_PIOA, \
@@ -57,10 +69,6 @@
 /** TWI0 clock pin */
 #define PIN_TWI_TWCK0                  {PIO_PA4A_TWCK0, PIOA, ID_PIOA,	\
 										PIO_PERIPH_A, PIO_DEFAULT}
-/** PCK1 */
-#define PIN_PCK1                       (PIO_PA17_IDX)
-#define PIN_PCK1_FLAGS                 (PIO_PERIPH_B | PIO_DEFAULT)
-
 /** TWI0 Data pins definition */
 #define TWI0_DATA_GPIO                 PIO_PA3_IDX
 #define TWI0_DATA_FLAGS                (PIO_PERIPH_A | PIO_DEFAULT)
@@ -84,7 +92,6 @@
 #define ID_BOARD_TWI		               ID_TWI0
 #define BOARD_TWI			                 TWI0
 #define BOARD_TWI_IRQn		             TWI0_IRQn
-
 
 /* TWI clock frequency in Hz (400KHz) */
 #define TWI_CLK     (400000UL)

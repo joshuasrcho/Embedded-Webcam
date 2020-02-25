@@ -29,32 +29,10 @@ void board_init(void)
 	ioport_set_pin_dir(WIFI_CTS_PIN, IOPORT_DIR_OUTPUT);
 	ioport_set_pin_level(WIFI_CTS_PIN, false);
 	
-	/* Configure TWI pins */
-	#ifdef CONF_BOARD_TWI0		
-		gpio_configure_pin(TWI0_DATA_GPIO, TWI0_DATA_FLAGS);
-		gpio_configure_pin(TWI0_CLK_GPIO, TWI0_CLK_FLAGS);
-	#endif
-		
-		/* Configure Image sensor pins */
-	#ifdef CONF_BOARD_OV2640_IMAGE_SENSOR
-		/*gpio_configure_pin(OV_SW_OVT_GPIO, OV_SW_OVT_FLAGS);
-		gpio_configure_pin(OV_RST_GPIO, OV_RST_FLAGS);
-		gpio_configure_pin(OV_FSIN_GPIO, OV_FSIN_FLAGS);
-		gpio_configure_pin(OV_HSYNC_GPIO, OV_HSYNC_FLAGS);*/
-		gpio_configure_pin(CAM_VSYNC_GPIO, CAM_VSYNC_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D0, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D1, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D2, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D3, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D4, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D5, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D6, CAM_DATA_BUS_FLAGS);
-		gpio_configure_pin(CAM_DATA_BUS_D7, CAM_DATA_BUS_FLAGS);
-	#endif	
+	//Pull RST pin of Camera high
+	ioport_set_pin_dir(CAM_RST_PIN, IOPORT_DIR_OUTPUT);
+	ioport_set_pin_level(CAM_RST_PIN, true);
 	
-	/* Configure PCK0 pins */
-	#ifdef CONF_BOARD_PCK1
-		gpio_configure_pin(PIN_PCK1, PIN_PCK1_FLAGS);
-	#endif
+	ioport_set_pin_dir(WIFI_NETWORK_STATUS_PIN, IOPORT_DIR_INPUT);
 
 }

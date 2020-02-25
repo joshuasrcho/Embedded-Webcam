@@ -61,4 +61,7 @@ volatile char input_line_wifi[1000];
 volatile uint32_t received_byte_wifi;
 volatile uint32_t wifi_web_setup_flag;
 volatile unsigned int input_pos_wifi;
+volatile uint32_t Ready2TransferFlag;
+volatile uint32_t StreamOpen;
+
 #endif /* WIFI_H_ */

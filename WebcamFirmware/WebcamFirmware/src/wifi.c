@@ -3,11 +3,14 @@
  */ 
 
 #include "wifi.h"
+#include "camera.h"
 #include "timer_interface.h"
 
 volatile uint32_t received_byte_wifi = 0;
 volatile uint32_t wifi_web_setup_flag = 0;
 volatile unsigned int input_pos_wifi = 0;
+volatile uint32_t Ready2TransferFlag = 0;
+volatile uint32_t StreamOpen = 0;
 
 void wifi_usart_handler(void)
 {
@@ -125,14 +128,18 @@ void process_incoming_byte_wifi(uint8_t in_byte){
 }
 
 void process_data_wifi(){
-	//if (strstr(input_line_wifi, "Unknown command")){
-	//	ioport_toggle_pin_level(LED_PIN);
-	//}
-	;
+	if (strstr(input_line_wifi, "Start transfer")){
+		Ready2TransferFlag = 1; // Wifi Chip is ready to receive data
+	}
+	if (strstr(input_line_wifi, "None")){
+		StreamOpen = 0; // A stream is not open 
+	}
+	if (strstr(input_line_wifi, "Websocket connected")){
+		StreamOpen = 1; // A stream is open
+	}
 }
 
-void write_wifi_command(char* comm, uint8_t cnt)
-{
+void write_wifi_command(char* comm, uint8_t cnt){
 	usart_write_line(WIFI_USART,comm);
 	while ((counts<cnt) & (received_byte_wifi==0) ){;}
 		if (counts>cnt){
@@ -140,7 +147,17 @@ void write_wifi_command(char* comm, uint8_t cnt)
 		}
 }
 
-void write_image_to_file(void)
-{
-	;
+void write_image_to_file(void){
+	char image_command[100];
+	sprintf(image_command,"image_transfer %d\r\n",IMG_LENGTH);
+	write_wifi_command(image_command,2);
+	
+	while(!Ready2TransferFlag){;}
+	
+	for(int i=IMG_START;i<IMG_END;i++){
+		usart_putchar(WIFI_USART,IMG_BUFFER[i]);
+	}
+	
+	Ready2TransferFlag = 0;
+	delay_ms(50);
 }
