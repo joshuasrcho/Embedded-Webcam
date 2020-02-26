@@ -142,10 +142,10 @@ void configure_camera(void){
 	}
 
 	/* ov2640 configuration */
-	ov_configure(BOARD_TWI, QVGA_YUV422_20FPS);
 	ov_configure(BOARD_TWI, JPEG_INIT);
+	ov_configure(BOARD_TWI, YUV422);//QVGA_YUV422_20FPS);
 	ov_configure(BOARD_TWI, JPEG);
-	ov_configure(BOARD_TWI, JPEG_640x480);
+	ov_configure(BOARD_TWI, JPEG_320x240);
 
 	/* Wait 3 seconds to let the image sensor to adapt to environment */
 	delay_ms(3000);
