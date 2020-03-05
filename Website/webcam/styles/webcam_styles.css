@@ -5,7 +5,7 @@
     text-align: left;
     text-transform: capitalize;
     font-size: 3em;
-    
+
 }
 
 hr {
@@ -27,7 +27,7 @@ hr {
     display: inline-grid;
     font-family: 'spartan', 'sans-serif';
     font-size: 16px;
-    margin:3%;
+    margin: 3%;
     width: 90px
 }
 
@@ -37,6 +37,40 @@ hr {
     padding: 10px;
 }
 
-.button:hover{
-    background-color: rgba( 184, 74, 231, 255 );
+.button:hover {
+    background-color: rgba(184, 74, 231, 255);
+}
+
+.webcam {
+    display: block;
+    margin: auto;
+    width: 45%
+}
+
+#webcam_img {
+    width=400px;
+}
+
+#start_button {
+    background-color: forestgreen;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: blcok;
+    font-family: 'spartan', 'sans-serif';
+    font-size: 16px;
+    margin-left: 40%;
+    margin-right: 40% width: 90px
+}
+
+#start_button:hover {
+    background-color: rgba(184, 74, 231, 255);
+}
+
+p {
+    font-family: 'spartan','sans-serif';
+    font-size=20px;
+    text-align: center
 }
