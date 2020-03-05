@@ -1,0 +1,64 @@
+#page_title {
+    color: #780c0c;
+    font-family: 'spartan', 'sans-serif';
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 3em;
+}
+
+hr {
+    position: relative;
+    top: 5px;
+    border: none;
+    height: 12px;
+    background: #652391;
+    margin-bottom: 20px;
+}
+
+.info {
+    padding: 50px 50px;
+    display:inline-block;
+    margin: 10px;
+}
+
+#joshua {
+    margin: 10px;
+    width: 400px;
+    float: left;
+    text-align: left;
+    font-family: 'spartan', 'sans-serif';
+}
+
+
+#silvester {
+    margin: 10px;
+    width: 400px;
+    float:right;
+    text-align: left;
+    font-family: 'spartan', 'sans-serif';
+}
+
+.button {
+    background-color: #652391;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-grid;
+    font-size: 16px;
+    font-family: 'spartan', 'sans-serif';
+    margin:3%;
+    width: 90px
+}
+
+.buttons {
+    margin: auto;
+    width: 45%;
+    padding: 10px;
+}
+
+.button:hover{
+    background-color: rgba( 184, 74, 231, 255 );
+}

@@ -7584,12 +7584,12 @@ void board_init(void)
 	
 	ioport_set_pin_dir(WIFI_SETUP_BUTTON_PIN, IOPORT_DIR_INPUT);
   402bcc:	2100      	movs	r1, #0
-  402bce:	2000      	movs	r0, #0
+  402bce:	2002      	movs	r0, #2
   402bd0:	4b0e      	ldr	r3, [pc, #56]	; (402c0c <board_init+0x58>)
   402bd2:	4798      	blx	r3
 	ioport_set_pin_mode(WIFI_SETUP_BUTTON_PIN, IOPORT_MODE_PULLUP);
   402bd4:	2108      	movs	r1, #8
-  402bd6:	2000      	movs	r0, #0
+  402bd6:	2002      	movs	r0, #2
   402bd8:	4b0e      	ldr	r3, [pc, #56]	; (402c14 <board_init+0x60>)
   402bda:	4798      	blx	r3
 	

@@ -1,0 +1,42 @@
+#page_title {
+    position: relative;
+    color: #780c0c;
+    font-family: 'spartan', 'sans-serif';
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 3em;
+    
+}
+
+hr {
+    position: relative;
+    top: 5px;
+    border: none;
+    height: 12px;
+    background: #652391;
+    margin-bottom: 20px;
+}
+
+.button {
+    background-color: #652391;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-grid;
+    font-family: 'spartan', 'sans-serif';
+    font-size: 16px;
+    margin:3%;
+    width: 90px
+}
+
+.buttons {
+    margin: auto;
+    width: 45%;
+    padding: 10px;
+}
+
+.button:hover{
+    background-color: rgba( 184, 74, 231, 255 );
+}

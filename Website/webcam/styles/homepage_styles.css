@@ -1,0 +1,39 @@
+#page_title {
+    color: #780c0c;
+    font-family: 'spartan', 'sans-serif';
+    text-align: center;
+    text-transform: capitalize;
+    font-size: 4em;
+}
+
+.button {
+    background-color: #652391;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-grid;
+    font-family: 'spartan', 'sans-serif';
+    font-size: 16px;
+    margin:3%;
+    width: 90px
+}
+
+.buttons {
+    margin: auto;
+    width: 45%;
+    padding: 10px;
+}
+
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.button:hover{
+    background-color: rgba( 184, 74, 231, 255 );
+}
