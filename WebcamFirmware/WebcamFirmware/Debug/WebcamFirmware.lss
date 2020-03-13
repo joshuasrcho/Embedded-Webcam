@@ -6857,7 +6857,7 @@ void configure_wifi_web_setup_pin(void)
 	/* Adjust PIO debounce filter using a 10 Hz filter. */
 	pio_set_debounce_filter(WIFI_SETUP_PIO, WIFI_SETUP_PIN_MSK, 10);
   40274c:	220a      	movs	r2, #10
-  40274e:	2101      	movs	r1, #1
+  40274e:	2104      	movs	r1, #4
   402750:	480b      	ldr	r0, [pc, #44]	; (402780 <configure_wifi_web_setup_pin+0x40>)
   402752:	4b0c      	ldr	r3, [pc, #48]	; (402784 <configure_wifi_web_setup_pin+0x44>)
   402754:	4798      	blx	r3
@@ -6868,7 +6868,7 @@ void configure_wifi_web_setup_pin(void)
   402756:	4b0c      	ldr	r3, [pc, #48]	; (402788 <configure_wifi_web_setup_pin+0x48>)
   402758:	9300      	str	r3, [sp, #0]
   40275a:	2379      	movs	r3, #121	; 0x79
-  40275c:	2201      	movs	r2, #1
+  40275c:	2204      	movs	r2, #4
   40275e:	210b      	movs	r1, #11
   402760:	4807      	ldr	r0, [pc, #28]	; (402780 <configure_wifi_web_setup_pin+0x40>)
   402762:	4c0a      	ldr	r4, [pc, #40]	; (40278c <configure_wifi_web_setup_pin+0x4c>)
@@ -6883,7 +6883,7 @@ void configure_wifi_web_setup_pin(void)
 
 	/* Enable PIO interrupt lines. */
 	pio_enable_interrupt(WIFI_SETUP_PIO, WIFI_SETUP_PIN_MSK);
-  40276c:	2101      	movs	r1, #1
+  40276c:	2104      	movs	r1, #4
   40276e:	4804      	ldr	r0, [pc, #16]	; (402780 <configure_wifi_web_setup_pin+0x40>)
   402770:	4b08      	ldr	r3, [pc, #32]	; (402794 <configure_wifi_web_setup_pin+0x54>)
   402772:	4798      	blx	r3
