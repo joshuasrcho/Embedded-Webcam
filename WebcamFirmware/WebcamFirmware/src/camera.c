@@ -88,9 +88,9 @@ void init_camera(void)
 	/* Init PIO capture*/
 	pio_capture_init(CAM_DATA_BUS_PIO, CAM_DATA_BUS_ID);
 
-	/* Init PCK1 to work at 24 Mhz */
-	/* 96/4= 24 Mhz */
-	PMC->PMC_PCK[1] = (PMC_PCK_PRES_CLK_4 | PMC_PCK_CSS_PLLB_CLK);
+	/* Init PCK1 to work at 48 Mhz */
+	/* 96/2= 48 Mhz */
+	PMC->PMC_PCK[1] = (PMC_PCK_PRES_CLK_2 | PMC_PCK_CSS_PLLB_CLK);
 	PMC->PMC_SCER = PMC_SCER_PCK1;
 	while (!(PMC->PMC_SCSR & PMC_SCSR_PCK1)) {
 	}

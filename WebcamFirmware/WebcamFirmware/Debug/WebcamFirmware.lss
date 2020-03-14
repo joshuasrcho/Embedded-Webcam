@@ -4776,9 +4776,9 @@ void init_camera(void)
 
 	/* Init PCK1 to work at 24 Mhz */
 	/* 96/4= 24 Mhz */
-	PMC->PMC_PCK[1] = (PMC_PCK_PRES_CLK_4 | PMC_PCK_CSS_PLLB_CLK);
+	PMC->PMC_PCK[1] = (PMC_PCK_PRES_CLK_2 | PMC_PCK_CSS_PLLB_CLK);
   401a68:	4b24      	ldr	r3, [pc, #144]	; (401afc <init_camera+0xa4>)
-  401a6a:	2223      	movs	r2, #35	; 0x23
+  401a6a:	2213      	movs	r2, #19
   401a6c:	645a      	str	r2, [r3, #68]	; 0x44
 	PMC->PMC_SCER = PMC_SCER_PCK1;
   401a6e:	4b23      	ldr	r3, [pc, #140]	; (401afc <init_camera+0xa4>)
