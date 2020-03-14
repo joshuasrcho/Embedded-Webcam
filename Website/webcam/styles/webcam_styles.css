@@ -1,5 +1,4 @@
 #page_title {
-    position: relative;
     color: #780c0c;
     font-family: 'spartan', 'sans-serif';
     text-align: left;
@@ -42,35 +41,64 @@ hr {
 }
 
 .webcam {
-    display: block;
+    position: relative;
     margin: auto;
-    width: 45%
+    width: 50%;
+
 }
 
-#webcam_img {
-    width=400px;
+
+
+#image {
+    opacity: 1;
+    display: block;
+    width=50%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+    border: 
+
 }
 
-#start_button {
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+.webcam:hover .image {
+    opacity: 0.3;
+}
+
+.webcam:hover .middle {
+    opacity: 1;
+}
+
+#btnWS {
     background-color: forestgreen;
     border: none;
     color: white;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    display: blcok;
+    display: block;
     font-family: 'spartan', 'sans-serif';
     font-size: 16px;
-    margin-left: 40%;
-    margin-right: 40% width: 90px
+    margin-left: 30%;
 }
 
-#start_button:hover {
+#btnWS:hover {
     background-color: rgba(184, 74, 231, 255);
 }
 
-p {
-    font-family: 'spartan','sans-serif';
-    font-size=20px;
-    text-align: center
+h6 {
+    font-family: 'spartan', 'sans-serif';
+    font-size=2em;
+    width: 33%;
+    margin-left: 33%;
+    margin-right: 33%;
 }

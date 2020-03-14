@@ -29,6 +29,7 @@ int main (void)
 	// Tell the WiFi to turn off the command prompt and command  echo
 	write_wifi_command("set sy c p off\r\n",2);
 	write_wifi_command("set sy c e off\r\n",2);
+	write_wifi_command("save\r\n",2);
 	
 	while(!ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
 		if (wifi_web_setup_flag){
@@ -41,17 +42,30 @@ int main (void)
 		if (wifi_web_setup_flag){
 			wifi_web_setup_flag = 0;
 			write_wifi_command("setup web\r\n",2);
-			while(!ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
-				// wait 10 seconds. If connected before 10 seconds, break.
+			counts=0;
+			while(counts<15){
+				// wait 15 seconds. If connected before 10 seconds, break.
 				// Else, reset
+				if (ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
+					break;
+				}
 			}
 		}
 		else{
 			if(!ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
-				// Reset wifi module
-				ioport_set_pin_level(WIFI_RESET_PIN, false);
-				delay_ms(100);
-				ioport_set_pin_level(WIFI_RESET_PIN, true);
+				counts=0;
+				while(1){
+					if (ioport_get_pin_level(WIFI_NETWORK_STATUS_PIN)){
+						break;
+					}
+					if (counts>45){
+						// Reset wifi module
+						ioport_set_pin_level(WIFI_RESET_PIN, false);
+						delay_ms(100);
+						ioport_set_pin_level(WIFI_RESET_PIN, true);
+						break;
+					}
+				}
 			}
 			else{
 				write_wifi_command("poll all\r\n",2); // checking to see any open stream

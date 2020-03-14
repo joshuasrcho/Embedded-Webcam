@@ -1,38 +1,38 @@
+
 <!DOCTYPE html>
 <html lang="">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Automation</title>
-    <link href="styles/webcam_styles.css" rel="stylesheet">
+    <title>My Webcam</title>
+
+    <link href="styles/webcam_styles.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@200;300" rel="stylesheet">
 </head>
 
 <body>
     <h1 id='page_title'>Webcam</h1>
-    
     <hr>
 
     <div class="buttons">
         <a href="index.html" class="button" id="home_button">Home</a>
         <a href="info.html" class="button" id="about_button">About</a>
-        <a href="wifi.html" class="button" id="wifi_button" target="_blank">Wifi</a>
+        <a href="/webapp/index.html" class="button" id="wifi_button" target="_blank">Wifi</a>
     </div>
 
 
-<p>Time: 3-4-2020</p>
+    <h6 id="timestamp"> </h6>
 
-<div class="webcam">
-    <img id="webcam_img" src="images/close-portrait-smiling-handsome-man-260nw-1011569245.jpg" alt="webcam_image">
-    
-</div>
-<div>
-    <button id="start_button">Start</button>
-</div>
+    <div class="webcam">
+        <img id="image" width="640" height="480">
+        <div class="middle">
+            <button id="btnWS" title="Click to start webcam">Start Webcam</button>
+        </div>
+    </div>
 
 
-<script src="scripts/webcam_functions.js"></script>
-</body>
 
-</html>
+    <script src="scripts/webcam_functions.js"></script>
+
+
+</body></html>

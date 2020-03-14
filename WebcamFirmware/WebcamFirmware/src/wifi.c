@@ -133,12 +133,13 @@ void process_data_wifi(){
 	if (strstr(input_line_wifi, "Start transfer")){
 		Ready2TransferFlag = 1; // Wifi Chip is ready to receive data
 	}
-	if (strstr(input_line_wifi, "None")){
+	if (strstr(input_line_wifi, "None") || (strstr(input_line_wifi, "Client not connected"))){
 		StreamOpen = 0; // A stream is not open 
 	}
 	if (strstr(input_line_wifi, "Websocket connected")){
 		StreamOpen = 1; // A stream is open
 	}
+
 }
 
 void write_wifi_command(char* comm, uint8_t cnt){
@@ -152,8 +153,12 @@ void write_image_to_file(void){
 	char image_command[100];
 	sprintf(image_command,"image_transfer %d\r\n",IMG_LENGTH);
 	write_wifi_command(image_command,2);
-	
-	while(!Ready2TransferFlag){;}
+	counts=0;
+	while(!Ready2TransferFlag){
+		if (counts>3){
+			return;
+		}
+			;}
 	
 	for(int i=IMG_START;i<=IMG_END;i++){
 		usart_putchar(WIFI_USART,IMG_BUFFER[i]);
