@@ -18,7 +18,10 @@ hr {
 .info {
     padding: 50px 50px;
     display:inline-block;
-    margin: 10px;
+    margin-left: 12%;
+    margin-right: 12%;
+    position: relative;
+    
 }
 
 #joshua {
